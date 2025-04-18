@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --muted: 0 0% 96.1%;
+  --muted-foreground: 0 0% 45.1%;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+    --muted: 0 0% 14.9%;
+    --muted-foreground: 0 0% 63.9%;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer base {
+  a:hover {
+    text-decoration: underline;
+  }
+
+  a:hover {
+    @apply font-semibold
+  }
+}
+
+@layer components {
+
+
+  .btn-spinner {
+    @apply grid
+  }
+
+  .btn-loading-spinner {
+    @apply flex flex-row items-center gap-2
+  }
+
+  .btn.btn-spinner {
+    
+    grid-template-areas: "stack";
+
+    .btn-loading-spinner, .btn-content {
+      grid-area: stack;
+    }
+
+    .btn-loading-spinner {
+      opacity: 0;
+    }
+
+    &.btn-loading {
+      .btn-loading-spinner {
+        opacity: 1;
+      }
+
+      .btn-content {
+        opacity: 0;
+      }
+    }
+
+    * {
+      justify-self: center;
+    }
+
+  }
+
+  .puzzle-grid-row-item {
+    @apply flex justify-center px-4 py-8 bg-slate-200 rounded-md text-center cursor-pointer items-center
+  }
+
+  .puzzle-grid-row-item-selected {
+    @apply bg-secondary text-secondary-content
+  }
+
+  .puzzle-grid-row-item:hover {
+    @apply bg-slate-400
+  }
+
+  .puzzle-grid-row {
+    @apply grid grid-cols-4 gap-4
+  }
+
+  .puzzle-grid {
+    @apply flex flex-col gap-4 w-full
+  }
+
+}
